@@ -1,16 +1,24 @@
 class Solution {
 public:
     int getMinDistance(vector<int>& nums, int target, int start) {
-        if(nums[start] == target) return 0;
-
-        int n=nums.size();
-        int d=1;
-        while(true){
-            if(start-d>=0 && nums[start-d]==target) return d;
-            if(start+d<n && nums[start+d] == target) return d;
-
-            d++;
+        int n = nums.size();
+       int left=0;
+       int right = n-1;
+       int result = INT_MAX;
+       while(left<=right){
+        if(nums[left]==target){
+            result  = min(result,abs(start-left));
+            left++;
         }
-        return -1;
+        else if(nums[right]==target){
+                result = min(result,abs(start-right));
+                right--;
+            }
+        else{
+            left++;
+            right--;
+        }
+       }
+        return result;
     }
 };
