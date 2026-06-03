@@ -5,7 +5,7 @@ public:
         int sum  = 0;
         int n  = cost.size();
         for(int i=0;i<n;i++){
-            if((i+1)%3 !=0) 
+            if(i%3==2) continue;
             sum += cost[i];
         }
         return sum;
