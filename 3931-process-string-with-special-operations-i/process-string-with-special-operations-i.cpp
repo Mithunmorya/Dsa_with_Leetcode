@@ -1,29 +1,38 @@
-//translated using AI
 class Solution {
 public:
-    string processStr(string s) {
-        string res;
-        int n = s.length();
 
-        for (int i = 0; i < n; i++) {
-            char ch = s[i];
-
-            if (ch == '*') {
-                if (res.length() != 0) {
-                    res.pop_back();
-                }
-            } 
-            else if (ch == '#') {
-                res += res;
-            } 
-            else if (ch == '%') {
-                reverse(res.begin(), res.end());
-            } 
-            else if (ch >= 'a' && ch <= 'z') {
-                res.push_back(ch);
-            }
+    string rever(string r){
+        if(r.size()==0) return "";
+        string ans;
+        for(int i = r.size()-1;i>=0;i--){
+            ans.push_back(r[i]);
         }
+        return ans;
+    }
+    string remove(string r){
+        if(r.size()==0) return "";
+        string ans;
+        for(int i=0;i<r.size()-1;i++){
+            ans.push_back(r[i]);
+        }
+        return ans;
+    }
+    string processStr(string s) {
+        if(s.size()==0) return "";
+        string ans;
+        for(int i = 0;i<s.size();i++){
+            if(s[i]=='*'){
+                ans = remove(ans);
+            }
+            else if(s[i]=='#')
+            ans = ans+ans;
 
-        return res;
+            else if(s[i]=='%')
+            ans = rever(ans);
+
+            else
+            ans.push_back(s[i]);
+        }
+        return ans;
     }
 };
