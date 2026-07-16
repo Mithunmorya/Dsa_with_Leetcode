@@ -14,15 +14,15 @@ public:
             k += 2;
             
         }
-        // int smallest = sumodd;
-        // if(sumodd>sumeven)
-        // smallest = sumeven;
+        int smallest = sumodd;
+        if(sumodd>sumeven)
+        smallest = sumeven;
 
-        // for(int i = smallest/2;i>=0;i--){
-        //     if(sumodd%i==0 && sumeven%i==0)
-        //     return i;
-        // }
-        // return -1;
-        return __gcd(sumodd,sumeven);
+        for(int i = smallest;i>=0;i--){
+            if(sumodd%i==0 && sumeven%i==0)
+            return i;
+        }
+        return -1;
+        // return __gcd(sumodd,sumeven);
     }
 };
